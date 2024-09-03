@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="tudo.css" media="screen" />
+</head>
+<body>
+    <div><h1>BANCO FILLIPINTO</h1></div>
+
+    <div>
+        <form>
+            <label for="nome">Digite seu nome</label>
+            <input type="text" id="text">
+        </form> <br> <br>
+        <form>
+            <label for="saldo">saldo</label>
+            <button type="button" id="saldo" name="saldo" onclick="mostrarSaldo()" > verificar saldo</button> <br> <br>
+            
+            
+            <label for="adicionar">adicionar dinheiro a conta</label>
+            <input type="number" id="depositar" nome="adicionar" placeholder="valor de deposito"> 
+            <button type="button" onclick="adicionarSaldo()">adicionar</button> <br> <br>
+            
+            <label for="sacar">sacar um valor</label>
+            <input type="number" id="sacar" placeholder="valor desejavel de saque">
+            <button type="button" onclick="saque()">sacar</button> <br> <br>
+            
+            <label for="transferir">transferir um valor</label>
+            <input type="number" id="transferir" placeholder="valor para transferencia">
+            <button type="button" onclick="optransfer()">transfira</button>
+        </form>
+    </div>
+<script>
+    let saldo = 10
+    let senha = 1111
+    let tSenha = parseFloat(prompt)
+
+
+    function aSaldo(mais) {
+        saldo = mais + saldo
+        alert(`seu saldo é: ${saldo}`)
+    }
+
+    function dSaldo(menos) {
+        saldo = saldo - menos
+        alert(`seu saldo é: ${saldo}`)
+        
+    }
+
+    function mostrarSaldo() {
+            alert(`Seu saldo atual é: ${saldo}`);
+        }
+
+    function adicionarSaldo() {
+        let adc = parseFloat(document.querySelector("#depositar").value)
+       
+        if (isNaN(adc) || adc <= 0) {
+            alert("operação não realizada")
+        }
+        else { let tSenha = prompt()
+            if(tSenha == senha) {
+            alert("valor a ser adicionado: " + adc)
+            aSaldo(adc)
+        }   else {alert("senha ivalida")}
+
+        }
+    }
+
+    function saque() {
+        let valorSac = parseFloat(document.querySelector("#sacar").value)
+        
+        if (isNaN(valorSac) || valorSac <= 0) {
+            alert("operação não realizada")
+        }
+        else { let vf = saldo - valorSac
+            if(vf < 0){
+                alert("ERRO! valor acima de saldo disponivel")
+            }
+            else { let tSenha = prompt()
+                if(tSenha == senha) {
+                alert("-" + valorSac)
+                dSaldo(valorSac)
+            }   else {alert("senha ivalida")} }
+        }
+
+    }
+    
+
+    function optransfer() { 
+        let valorTransf = (document.querySelector("transferir").value)
+        alert(valorTransf)
+        if (isNaN(valorTransf) || valorTransf <= 0) {
+            alert("operação não realizada")
+        }
+        else { let vt = saldo - valorTransf
+            if(vt < 0){
+                alert("ERRO! valor acima de saldo disponivel")
+            }
+            else { let tSenha = prompt()
+                if(tSenha == senha) {
+                alert("-" + valorTransf)
+                dSaldo(valorTransf)
+            }   else {alert("senha ivalida")} }
+        }
+    }
+    
+</script>
+</body>
+
+</html>
